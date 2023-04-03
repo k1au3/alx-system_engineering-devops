@@ -15,12 +15,12 @@ apt-get -y install haproxy=2.5.\*
 
 # Configure Haproxy
 config="\
-frontend balancer
+frontend haproxy_balancer
     bind *:80
     mode http
-    default_backend lb-backends
+    default_backend webservers
 
-backend lb-backends
+backend webservers
     balance roundrobin
     server 102998-web-01 18.233.64.140:80  check
     server 102998-web-02 54.157.186.85:80 check
